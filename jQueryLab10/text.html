@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>jQuery Text</h1>
+    </header>
+    <div id="container">
+        <h3 id="source">Hello jQuery</h3>
+        <h3 id="target"></h3>
+        <button id="getText">get Text</button>
+        <button id="setText">set Text</button>
+        <p>
+            <b>Click</b> to change the <span>html</span>
+        </p>
+        <button id="setHtml">set Html</button>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function(){
+            // text()
+            $('#getText').on('click',function(){
+                let text=$('#source').text()
+                $('#target').text(text)
+            })
+            $('#setText').on('click',function(){
+                $('#source').text('set Text jQuery')
+            })
+            // html()
+            $('p').one('click',function(){
+                let html=$('p').html()
+                $(this).text(html)
+            })
+            $('#setHtml').on('click',function(){
+                $('p').html('<h1>set Html</h1>')
+            })
+        })
+    </script>
+</body>
+</html>

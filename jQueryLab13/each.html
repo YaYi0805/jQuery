@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>each</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>jQuery each</h1>
+    </header>
+    <div id="container">
+        <table>
+            <tr>
+                <td>11</td>
+                <td>22</td>
+                <td>33</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>22</td>
+                <td>33</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>22</td>
+                <td>33</td>
+            </tr>
+        </table>
+        <button class="btn" data-age="18" data-team="team1" data-name="apple">people1</button>
+        <button class="btn" data-age="20" data-team="team2" data-name="banana">people2</button>
+        <div class="target"></div>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            //each()將包裝在jQuery的元素一筆一筆讀出
+            let arr = ['EEIT129', 'iii', '205', '35']
+            $.each(arr, function (index, ele) {
+                console.log(ele)
+            })
+            let sum = 0;
+            $('td').each(function () {
+                sum += Number($(this).text())
+            })
+            console.log(sum);
+
+            let data = [
+                {
+                    "name": "Sandy",
+                    "email": "Sandy@gmail.com",
+                    "phone": "0900000000"
+                },
+                {
+                    "name": "Alber",
+                    "email": "Alber@gmail.com",
+                    "phone": "0900000000"
+                },
+                {
+                    "name": "Happy",
+                    "email": "Happy@gmail.com",
+                    "phone": "0900000000"
+                }
+            ]
+            $.each(data, function (index, ya) {
+                console.log(ya)
+                console.log(ya.name)
+            })
+
+            //inArray()回傳索引值 無此值會回傳負值
+            let arr1 = [9, 8, 7, 6, "5", "4", "3"]
+            console.log($.inArray(7, arr1)) //2
+            console.log($.inArray(2, arr1)) //-1
+
+            //.map()回傳新的陣列
+            result = $.map(arr1, function (item, index) {
+                console.log(item + "," + index)
+                return item * index
+            })
+            console.log(result)
+
+            //.grep()根據設定的條件找到陣列符合的資料回傳
+            result_grep=$.grep(arr1,function(item,index){
+                return(item%2==0)
+            })
+            console.log(result_grep)
+
+            //data()透過屬性的方式儲存一些自訂的資料在元素中
+            $('.btn').on('click',function(){
+                let age=$(this).data('age'),team=$(this).data('team'),name=$(this).data('name')
+                console.log(age)
+                $('.target').text(`${name} age is ${age} and team is ${team}`)
+            })
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Filter</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .table1 {
+            border: 2px solid black;
+            width: 400px;
+            height: 400px;
+            margin: 10 auto;
+        }
+
+        tr td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Basic Filter</h1>
+    </header>
+    <div id="container">
+        <table class="table1">
+            <tr>
+                <td></td>
+                <td class="not"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="not"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="not"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="not"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+            <ul id="list1">
+                <li>List Item</li>
+                <li class="not">List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li>List Item</li>
+                <li><span>Hello</span>List Item</li>
+                <li>List Item</li>
+            </ul>
+            <hr>
+            <p id="para1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit tenetur soluta praesentium facere delectus incidunt, nobis necessitatibus vel, aliquam explicabo cum eos aspernatur exercitationem eligendi beatae saepe ab? Amet, maiores.</p>
+            <p id="para2">Hello Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit tenetur soluta praesentium facere delectus incidunt, nobis necessitatibus vel, aliquam explicabo cum eos aspernatur exercitationem eligendi beatae saepe ab? Amet, maiores.</p>
+            <p id="para3"><span>jQuery</span>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit tenetur soluta praesentium facere delectus incidunt, nobis necessitatibus vel, aliquam explicabo cum eos aspernatur exercitationem eligendi beatae saepe ab? Amet, maiores.</p>
+            <p id="para4"></p>
+
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            //basic selector
+            let all=$('*');   //All selector $('*')選取所有元素
+            console.log(all); //jQuery.fn.init(57) 共有57個元素
+
+            let ele=$('table'); //Element selector 選取所有table的元素
+            console.log(ele); //jQuery.fn.init [table.table1, prevObject: jQuery.fn.init(1)]
+            console.log($('.table1')); //Class selector 選取類別為class="table1"的元素 //jQuery.fn.init [table.table1, prevObject: jQuery.fn.init(1)]
+            console.log($('#list1')); //ID selector 選取id為list1的元素 //jQuery.fn.init [ul#list1]
+            //---------------------------------------------------------------------------------------------------------------------------------------
+            //basic filter
+            //:eq(n) n從0開始
+            //$('td:eq(4)').css('background','pink')
+            //$('td:even').css('background','lightgreen')
+            //$('td:odd').css('background','lightblue')
+            //:lt(n) <n
+            //$('td:lt(4)').css('background','pink')
+            //:gt(n) >n
+            //$('td:gt(6)').css('background','gray')
+            //$('td:first').css('background','red')
+            //$('td:last').css('background','black')
+            //選取沒有符合條件的元素 非class="not"的元素
+            //$('td:not(.not)').css('background','white')
+            //---------------------------------------------------------------------------------------------------------------------------------------
+            //content filter selector
+            //$('p:contains("Hello")').css('background','lightgreen')
+            //$('p:has(span)').css('background','pink')
+            //:parent 含有內文或子元素 
+            //$('p:parent').css('background','yellow')
+            //:empty
+            //$('p:empty').text('empty test')
+            //---------------------------------------------------------------------------------------------------------------------------------------
+            //child filter selector
+            //父下第一子
+            //$('tr td:first-child').css('background','lightgreen')
+            //父下最後子
+            //$('tr td:last-child').css('background','lightblue')
+            //父下第n子 :nth-child(n) n從1開始 
+            //$('tr td:nth-child(2)').css('background','pink')
+            //父下只有一子
+            //$('tr td:only-child').text(':only-child')
+            //---------------------------------------------------------------------------------------------------------------------------------------
+            
+            //filtering selector 從找到的元素中再找出符合的
+            //:eq()->.eq() n從0開始
+            //$('li').eq(4).css('background','pink')
+            //$('li').first().css('background','pink')
+            //$('li').last().css('background','pink')
+            //$('li').not('.not').css('background','lightblue')
+            //$('li').has('span').css('background','blue')
+
+            // $('li').on('click',function(){
+            //     if($(this).is(':odd')){
+            //         $(this).text('is(:odd)')
+            //     }
+            // })        
+
+        })
+    </script>
+</body>
+
+</html>

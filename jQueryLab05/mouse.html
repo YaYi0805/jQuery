@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouse</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        div.out{
+            width: 40%;
+            height: 250px;
+            margin: 0 15px;
+            background-color: lightskyblue;
+            float: left;
+        }
+        div.in{
+            width: 60%;
+            height: 60%;
+            background-color: gold;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>jQuery Mouse</h1>
+    </header>
+    <div id="container">
+        <input type="button" value="Button" id="btn">
+        <hr>
+
+        <div class="box out overout">
+            <span>move your mouse</span>
+            <div class="in"></div>
+        </div>
+        <div class="box out enterleave">
+            <span>move your mouse</span>
+            <div class="in"></div>
+        </div>
+
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            //比較 mouseover,mouseout 和 mouseenter,mouseleave
+            //mouseover,mouseout選取元素及其子元素都觸發
+            let count_overout=0;
+            $('div.overout').mouseover(function () {
+                count_overout+=1;
+                $(this).find('span').text(`mouse over x ${count_overout}`)
+            }).mouseout(function () {
+                $(this).find('span').text(`mouse out x ${count_overout}`)
+            })
+
+            //mouseenter,mouseleave只有選取元素觸發
+            let count_enterleave=0;
+            $('div.enterleave').mouseenter(function () {
+                count_enterleave+=1;
+                $(this).find('span').text(`mouse enter x ${count_enterleave}`)
+            }).mouseleave(function () {
+                $(this).find('span').text(`mouse leave x ${count_enterleave}`)
+            })
+
+            //-----------------------------------------------------------------
+
+            //click
+            //dblclick少用,因為手機版沒有
+            $('#btn').on('dblclick',function () {
+                console.log('double click');
+            })
+            //contextmenu少用,因為手機版沒有
+            $('#btn').on('contextmenu',function () {
+                console.log('right click');
+            })
+
+            $('#btn').on('mousedown',function () {
+                console.log('mousedown');
+            })
+            
+            /*
+            $('#btn').on('mouseenter',function () {
+                console.log('mouseenter');
+            })
+
+            $('#btn').on('mouseleave',function () {
+                console.log('mouseleave');
+            })
+            */
+            //jQuery 提供 hover結合mouseenter & mouseleave
+            $('#btn').hover(function () {
+                console.log('hover');
+            })
+        })
+
+    </script>
+</body>
+
+</html>

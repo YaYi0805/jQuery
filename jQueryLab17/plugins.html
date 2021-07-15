@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plugins</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/jQueryLab17/js/lightbox2-2.11.3/dist/css/lightbox.css">
+    <link rel="stylesheet" href="/jQueryLab17/js/vegas/vegas.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <style>
+        img {
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>jQuery Plugins</h1>
+    </header>
+    <div id="container">
+        <!-- <a href="/jQueryLab12/images/img01.jpg" data-lightbox="image-1" data-title="My caption"><img
+                src="/jQueryLab12/images/img01.jpg"></a>
+        <a href="/jQueryLab12/images/img02.jpg" data-lightbox="roadtrip"><img src="/jQueryLab12/images/img02.jpg"></a>
+        <a href="/jQueryLab12/images/img03.jpg" data-lightbox="roadtrip"><img src="/jQueryLab12/images/img03.jpg"></a>
+        <a href="/jQueryLab12/images/img04.jpg" data-lightbox="roadtrip"><img src="/jQueryLab12/images/img04.jpg"></a> -->
+        <button id="btn">sweetalert</button>
+        <hr>
+        <table id="table_id" class="display">
+            <thead>
+                <tr>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Row 2 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Row 2 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Row 2 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Gary Data 1</td>
+                    <td>Row 2 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Row 2 Data 2</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script src="/jQueryLab17/js/lightbox2-2.11.3/dist/js/lightbox.js"></script>
+    <script src="/jQueryLab17/js/vegas/vegas.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function () {
+            $('#table_id').DataTable();
+
+            $('#btn').on('click', function () {
+                Swal.fire({
+                    // position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            })
+
+            $("#example, body").vegas({
+                slides: [
+                    { src: "/jQueryLab12/images/img01.jpg" },
+                    { src: "/jQueryLab12/images/img02.jpg" },
+                    { src: "/jQueryLab12/images/img03.jpg" },
+                    { src: "/jQueryLab12/images/img04.jpg" }
+                ],
+                transition: ['fade', 'swirlLeft', 'fade', 'swirlLeft'],
+                delay: 2000
+            });
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .div-card{
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>jQuery Form</h1>
+    </header>
+    <div id="container">
+        <form>
+            <input type="text" id="input1" class="card-input" maxlength="4">
+            <input type="text" id="input1" class="card-input" maxlength="4">
+            <input type="text" id="input1" class="card-input" maxlength="4">
+            <input type="text" id="input1" class="card-input" maxlength="4">
+            <hr>
+            <div class="div-card">
+                <input type="text" id="input1" class="card-input1" maxlength="4">
+            </div>
+            <div class="div-card">
+                <input type="text" id="input1" class="card-input1" maxlength="4">
+            </div>
+            <div class="div-card">
+                <input type="text" id="input1" class="card-input1" maxlength="4">
+            </div>
+            <div class="div-card">
+                <input type="text" id="input1" class="card-input1" maxlength="4">
+            </div>
+            <hr>
+            <select name="" id="select">
+                <option value="TPE">台北市</option>
+                <option value="NTPC">新北市</option>
+                <option value="TYN">桃園市</option>
+            </select>
+            <div id="target"></div>
+        </form>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            $('#input1').focus(function(){
+                console.log('focus');
+            })
+            $('#input1').blur(function(){
+                console.log('blur');
+            })
+
+            $('.card-input').keyup(function(){
+                let maxLen=4;
+                let contentLen=$(this).val().length;
+                console.log(contentLen);
+                if(contentLen==maxLen){
+                    $(this).next().focus();
+                }
+            })
+
+            $(".card-input1").keyup(function(){
+                let maxLen=4;
+                let contentLen=$(this).val().length;
+                console.log(contentLen);
+                if(contentLen==maxLen){
+                    //往上找div 往後找一個兄弟層div 下找input
+                    $(this).parent().next().find(':input').focus();
+                }
+            })
+            
+            $('#select').change(function(){
+                let val=$(this).val();
+                console.log(val);
+                $('#target').text(val);
+            })
+        })
+    </script>
+</body>
+
+</html>

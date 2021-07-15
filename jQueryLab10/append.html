@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>append</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        table {
+            border: 2px solid black;
+        }
+
+        tr td {
+            border: 1px solid black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>jQuery append</h1>
+    </header>
+    <div id="container">
+        <button id="append">append Data</button>
+        <button id="appendTo">appendTo Data</button>
+        <button id="prepend">prepend Data</button>
+        <button id="prependTo">prependTo Data</button>
+        <button id="after">After Data</button>
+        <button id="insertafter">insertAfter Data</button>
+        <button id="before">Before Data</button>
+        <button id="insertbefore">insertBefore Data</button>
+        <button id="empty">empty</button>
+        <button id="remove">remove</button>
+        <hr>
+        <table>
+            <tbody>
+                <tr id="move">
+                    <td>one</td>
+                    <td>two</td>
+                    <td>three</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="/jquery-3.6.0.js"></script>
+    <script>
+        let i = 1;
+        $('#append').on('click', function () {
+            let content =
+                `
+               <tr>
+                    <td>${i}Testone</td>
+                    <td>Testtwo</td>
+                    <td>Testthree</td>
+                </tr>
+               `
+            $('tbody').append(content);
+            i++;
+        })
+        $('#prepend').on('click', function () {
+            let content =
+                `
+               <tr>
+                    <td>${i}Testone</td>
+                    <td>Testtwo</td>
+                    <td>Testthree</td>
+                </tr>
+               `
+            $('tbody').prepend(content);
+            i++;
+        })
+        $('#appendTo').on('click', function () {
+            $('#move').appendTo('tbody')
+        })
+        $('#prependTo').on('click', function () {
+            $('#move').prependTo('tbody')
+        })
+        $('#after').on('click', function () {
+            $('#move').after(
+                `
+                <tr>
+                    <td>${i}Testone</td>
+                    <td>Testtwo</td>
+                    <td>Testthree</td>
+                </tr>
+                `
+            )
+            i++;
+        })
+        $('#insertafter').on('click', function () {
+            $(`
+                <tr>
+                    <td>${i}Testone</td>
+                    <td>Testtwo</td>
+                    <td>Testthree</td>
+                </tr>
+            `).insertAfter('#move')
+            i++;
+        })
+        $('#before').on('click', function () {
+            $('#move').before(
+                `
+                <tr>
+                    <td>${i}Testone</td>
+                    <td>Testtwo</td>
+                    <td>Testthree</td>
+                </tr>
+                `
+            )
+            i++;
+        })
+        $('#insertbefore').on('click', function () {
+            $(`
+                <tr>
+                    <td>${i}Testone</td>
+                    <td>Testtwo</td>
+                    <td>Testthree</td>
+                </tr>
+            `).insertBefore('#move')
+            i++;
+        })
+        //empty() 清空內容
+        $('#empty').on('click',function(){
+            $('tbody').empty();
+        })
+        //remove() 移除含tbody
+        $('#remove').on('click',function(){
+            $('tbody').remove();
+        })
+
+    </script>
+</body>
+
+</html>
